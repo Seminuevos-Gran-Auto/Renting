@@ -21,9 +21,9 @@ export function ResumenCotizacion({ payload }: ResumenCotizacionProps) {
     const fechaFormateada = Number.isNaN(fecha.valueOf())
         ? "Fecha no disponible"
         : new Intl.DateTimeFormat("es-MX", {
-              dateStyle: "short",
-              timeStyle: "short",
-          }).format(fecha);
+            dateStyle: "short",
+            timeStyle: "short",
+        }).format(fecha);
 
     return (
         <Card className="border-border/70 shadow-lg shadow-black/5 print:border-none print:shadow-none print:[break-inside:avoid]">
