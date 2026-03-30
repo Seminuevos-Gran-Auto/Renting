@@ -26,7 +26,7 @@ export function ResumenCotizacion({ payload }: ResumenCotizacionProps) {
         }).format(fecha);
 
     return (
-        <Card className="border-border/70 shadow-lg shadow-black/5 print:border-none print:shadow-none print:[break-inside:avoid]">
+        <Card className="border-border/70 shadow-lg shadow-black/5 print:break-inside-avoid print:border-none print:shadow-none">
             <CardHeader className="space-y-4 px-5 pb-4 pt-6 sm:space-y-5 sm:px-8 sm:pb-6 sm:pt-8 print:px-4 print:pt-3">
                 <BrandLogo className="pb-1" imageClassName="w-[160px] sm:w-[210px]" priority />
                 <CardTitle className="text-center text-2xl font-semibold text-foreground sm:text-3xl print:text-2xl">

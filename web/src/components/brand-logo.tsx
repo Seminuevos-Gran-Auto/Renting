@@ -21,7 +21,7 @@ export function BrandLogo({
                 width={320}
                 height={120}
                 priority={priority}
-                className={cn("h-auto w-[170px] sm:w-[220px]", imageClassName)}
+                className={cn("h-auto w-42.5 sm:w-55", imageClassName)}
             />
         </div>
     );
