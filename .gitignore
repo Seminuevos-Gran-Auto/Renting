@@ -1,2 +1,5 @@
+# Entornos locales
+.venv/
+
 # No versionar documentos fuente de cálculo
 *.xlsx
