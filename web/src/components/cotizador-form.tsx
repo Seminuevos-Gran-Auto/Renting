@@ -20,7 +20,7 @@ import {
     parseNumberInput,
     STORAGE_KEY_COTIZACION,
 } from "@/lib/cotizacion";
-import type { CotizacionFormValues } from "@/types/cotizacion";
+import type { CotizacionFormDraft, CotizacionFormValues } from "@/types/cotizacion";
 
 type NumberFieldConfig = {
     id: keyof CotizacionFormValues;
@@ -89,7 +89,7 @@ const numberFields: NumberFieldConfig[] = [
 export function CotizadorForm() {
     const router = useRouter();
 
-    const defaultValues = useMemo<Partial<CotizacionFormValues>>(
+    const defaultValues = useMemo<CotizacionFormDraft>(
         () => ({
             asesorNombre: "",
             clienteNombre: "",
