@@ -11,4 +11,7 @@ const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 module.exports = {
     ...nextConfig,
     basePath: isGithubPages ? '/Renting' : '',
+    env: {
+        NEXT_PUBLIC_BASE_PATH: isGithubPages ? '/Renting' : '',
+    },
 };

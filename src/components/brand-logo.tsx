@@ -13,10 +13,12 @@ export function BrandLogo({
     imageClassName,
     priority = false,
 }: BrandLogoProps) {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
     return (
         <div className={cn("flex justify-center", className)}>
             <Image
-                src="/brand/logo_grupogranauto.png"
+                src={`${basePath}/brand/logo_grupogranauto.png`}
                 alt="Grupo Gran Auto"
                 width={320}
                 height={120}
