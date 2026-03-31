@@ -6,4 +6,9 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;
+const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+
+module.exports = {
+    ...nextConfig,
+    basePath: isGithubPages ? '/Renting' : '',
+};
