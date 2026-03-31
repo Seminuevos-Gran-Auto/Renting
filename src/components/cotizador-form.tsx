@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, type ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -23,12 +23,23 @@ import {
 import type { CotizacionFormDraft, CotizacionFormValues } from "@/types/cotizacion";
 
 type NumberFieldConfig = {
-    id: keyof CotizacionFormValues;
+    id: NumericFieldName;
     label: string;
     placeholder: string;
     required?: boolean;
     max?: number;
 };
+
+type NumericFieldName =
+    | "precioVehiculo"
+    | "mensualidadPorcentaje"
+    | "costoSeguro"
+    | "costoPlacas"
+    | "costoMantenimiento"
+    | "costoGps"
+    | "gastosAdministrativos"
+    | "rentasExtraordinarias"
+    | "opcionCompraPorcentaje";
 
 const numberFields: NumberFieldConfig[] = [
     {
@@ -127,10 +138,17 @@ export function CotizadorForm() {
         return typeof message === "string" ? message : undefined;
     };
 
-    const numericRegister = (fieldName: keyof CotizacionFormValues) =>
+    const numericRegister = (fieldName: NumericFieldName) =>
         register(fieldName, {
             setValueAs: (value) => parseNumberInput(value),
         });
+
+    const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const fileName = event.currentTarget.files?.[0]?.name;
+        setValue("imagenVehiculoNombre", fileName, {
+            shouldDirty: true,
+        });
+    };
 
     return (
         <Card className="border-border/70 shadow-lg shadow-black/5 print:shadow-none">
@@ -195,12 +213,7 @@ export function CotizadorForm() {
                             type="file"
                             accept="image/*"
                             className="h-11"
-                            onChange={(event) => {
-                                const fileName = event.currentTarget.files?.[0]?.name;
-                                setValue("imagenVehiculoNombre", fileName, {
-                                    shouldDirty: true,
-                                });
-                            }}
+                            onChange={handleImageChange}
                         />
                     </div>
 
@@ -237,7 +250,7 @@ export function CotizadorForm() {
 }
 
 type NumberInputFieldProps = {
-    id: keyof CotizacionFormValues;
+    id: NumericFieldName;
     label: string;
     placeholder: string;
     error?: string;
