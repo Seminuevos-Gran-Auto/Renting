@@ -9,7 +9,7 @@ Aplicación web en Next.js + TypeScript para calcular cotizaciones de renting en
 
 ## Ejecutar en local
 
-Desde la carpeta `web`:
+Desde la raiz del repositorio:
 
 ```bash
 npm install
@@ -17,13 +17,6 @@ npm run dev
 ```
 
 Abre http://localhost:3000.
-
-Tambien puedes ejecutar desde la raiz del repositorio:
-
-```bash
-npm --prefix web install
-npm --prefix web run dev
-```
 
 ## Scripts
 
