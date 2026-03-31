@@ -11,7 +11,7 @@ export interface CotizacionFormValues {
     costoGps?: number;
     gastosAdministrativos?: number;
     rentasExtraordinarias?: number;
-    opcionCompraPorcentaje: number;
+    opcionCompraPorcentaje?: number;
 }
 
 export interface CotizacionResultado {
@@ -19,7 +19,7 @@ export interface CotizacionResultado {
     pagoInicial: number;
     pagoMes1: number;
     rentaMensualRestante: number;
-    opcionCompraMonto: number;
+    opcionCompraMonto?: number;
 }
 
 export interface CotizacionPayload {

@@ -90,9 +90,8 @@ const numberFields: NumberFieldConfig[] = [
     },
     {
         id: "opcionCompraPorcentaje",
-        label: "Opción Compra (% sobre valor inicial)",
+        label: "Opción Compra (% sobre valor inicial) (Opcional)",
         placeholder: "0.00",
-        required: true,
         max: 100,
     },
 ];
@@ -156,7 +155,7 @@ export function CotizadorForm() {
                 <BrandLogo priority />
                 <div className="space-y-1 text-center">
                     <CardTitle className="text-2xl font-semibold text-foreground sm:text-3xl">
-                        Cotizador
+                        Renting
                     </CardTitle>
                     <p className="text-sm text-muted-foreground">
                         Completa los datos para generar la cotización al momento.

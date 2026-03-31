@@ -30,7 +30,7 @@ export function ResumenCotizacion({ payload }: ResumenCotizacionProps) {
             <CardHeader className="space-y-4 px-5 pb-4 pt-6 sm:space-y-5 sm:px-8 sm:pb-6 sm:pt-8 print:px-4 print:pt-3">
                 <BrandLogo className="pb-1" imageClassName="w-[160px] sm:w-[210px]" priority />
                 <CardTitle className="text-center text-2xl font-semibold text-foreground sm:text-3xl print:text-2xl">
-                    Resumen de Cotización
+                    Cotización Renting
                 </CardTitle>
                 <div className="grid gap-2 text-sm text-secondary-foreground sm:grid-cols-2 sm:gap-3">
                     <p>
@@ -99,13 +99,16 @@ export function ResumenCotizacion({ payload }: ResumenCotizacionProps) {
                         value={formatCurrency(resultado.pagoMes1)}
                         highlight
                     />
-                    <SummaryRow
-                        label={`Opción de Compra Después de 12 Meses (${formatPercent(
-                            input.opcionCompraPorcentaje,
-                        )} del Valor Inicial)`}
-                        value={formatCurrency(resultado.opcionCompraMonto)}
-                        highlight
-                    />
+                    {input.opcionCompraPorcentaje !== undefined &&
+                        resultado.opcionCompraMonto !== undefined ? (
+                        <SummaryRow
+                            label={`Opción de Compra Después de 12 Meses (${formatPercent(
+                                input.opcionCompraPorcentaje,
+                            )} del Valor Inicial)`}
+                            value={formatCurrency(resultado.opcionCompraMonto)}
+                            highlight
+                        />
+                    ) : null}
                 </div>
 
                 <p className="text-xs leading-relaxed text-muted-foreground print:pt-2">
@@ -153,6 +156,9 @@ export function getResumenDebugData(payload: CotizacionPayload) {
         pagoInicial: roundTo2(payload.resultado.pagoInicial),
         pagoMes1: roundTo2(payload.resultado.pagoMes1),
         rentaMensualRestante: roundTo2(payload.resultado.rentaMensualRestante),
-        opcionCompraMonto: roundTo2(payload.resultado.opcionCompraMonto),
+        opcionCompraMonto:
+            payload.resultado.opcionCompraMonto === undefined
+                ? undefined
+                : roundTo2(payload.resultado.opcionCompraMonto),
     };
 }

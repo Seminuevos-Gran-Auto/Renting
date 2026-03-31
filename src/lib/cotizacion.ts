@@ -58,7 +58,8 @@ export const cotizacionSchema = z.object({
     opcionCompraPorcentaje: z
         .number({ error: "Ingresa un número válido" })
         .positive("La opción de compra debe ser mayor a 0")
-        .max(100, "El porcentaje no puede ser mayor a 100"),
+        .max(100, "El porcentaje no puede ser mayor a 100")
+        .optional(),
 });
 
 export const STORAGE_KEY_COTIZACION = "renting-cotizacion-actual";
@@ -86,7 +87,9 @@ export function calcularCotizacion(
     const rentaMensualRestante = pagoMes1 - rentasExtraordinarias / 11;
 
     const opcionCompraMonto =
-        input.precioVehiculo * (input.opcionCompraPorcentaje / 100);
+        input.opcionCompraPorcentaje === undefined
+            ? undefined
+            : input.precioVehiculo * (input.opcionCompraPorcentaje / 100);
 
     return {
         mensualBase,
